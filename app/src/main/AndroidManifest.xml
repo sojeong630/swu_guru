@@ -23,7 +23,8 @@
         <activity
             android:name=".SwuMarketActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".RealMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

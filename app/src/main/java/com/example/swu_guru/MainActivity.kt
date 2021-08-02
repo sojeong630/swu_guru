@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     // val db = FirebaseFirestore.getInstance()
     lateinit var marketButton : Button
     lateinit var gbbtn : Button
+    lateinit var borrowButton : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,6 +26,13 @@ class MainActivity : AppCompatActivity() {
         gbbtn = findViewById(R.id.gbbtn)
         gbbtn.setOnClickListener{
             var intent = Intent(this, GroupBuying::class.java)
+            startActivity(intent)
+
+        }
+
+        borrowButton = findViewById(R.id.borrowButton)
+        borrowButton.setOnClickListener{
+            var intent = Intent(this, BorrowList::class.java)
             startActivity(intent)
 
         }
