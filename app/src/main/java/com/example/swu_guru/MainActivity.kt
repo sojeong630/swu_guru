@@ -8,8 +8,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
 
-    val db = FirebaseFirestore.getInstance()
+    // val db = FirebaseFirestore.getInstance()
     lateinit var marketButton : Button
+    lateinit var gbbtn : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,5 +21,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+        gbbtn = findViewById(R.id.gbbtn)
+        gbbtn.setOnClickListener{
+            var intent = Intent(this, GroupBuying::class.java)
+            startActivity(intent)
+
+        }
+
     }
 }

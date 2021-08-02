@@ -4,20 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swu_guru.databinding.ItemRecyclerBinding
 
-class CustomAdapter: RecyclerView.Adapter<Holder>() {
+class CustomAdapter: RecyclerView.Adapter<Holder2>() {
     var listData = mutableListOf<Memo>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder2 {
         val binding = ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(binding)
+        return Holder2(binding)
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) {
+    override fun onBindViewHolder(holder: Holder2, position: Int) {
         val memo = listData.get(position)
         holder.setMemo(memo)
     }
@@ -27,7 +25,7 @@ class CustomAdapter: RecyclerView.Adapter<Holder>() {
     }
 }
 
-class Holder(val binding: ItemRecyclerBinding): RecyclerView.ViewHolder(binding.root) {
+class Holder2(val binding: ItemRecyclerBinding): RecyclerView.ViewHolder(binding.root) {
 
     init {
         binding.root.setOnClickListener {

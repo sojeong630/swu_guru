@@ -40,21 +40,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />
+
         <Button
             android:id="@+id/btnwrite"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/btn_solid"
             android:drawableLeft="@drawable/plus_img"
-            android:drawablePadding="4dp"
             android:fontFamily="@font/noto_sans"
             android:text="글쓰기"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
     </LinearLayout>
 
 

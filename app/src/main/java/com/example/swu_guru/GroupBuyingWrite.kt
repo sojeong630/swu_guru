@@ -20,7 +20,6 @@ import android.util.Log
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
 import java.io.ByteArrayOutputStream
 import java.sql.Types.NULL
 
