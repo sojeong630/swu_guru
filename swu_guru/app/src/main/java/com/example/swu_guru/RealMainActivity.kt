@@ -46,7 +46,7 @@ class RealMainActivity : AppCompatActivity() {
 
             //로그인 후 다른 액티비티로 전환하기
             val nextIntent = Intent(this, MainActivity::class.java)
-        //전환된 액티비티에 데이터 값 전달
+            //전환된 액티비티에 데이터 값 전달
             nextIntent.putExtra("id", savedId) //key: "email", value: inputEmail
             nextIntent.putExtra("password", savedPw)
             startActivity(nextIntent)

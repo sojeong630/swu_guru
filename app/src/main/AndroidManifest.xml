@@ -35,6 +35,10 @@
         <activity android:name=".GroupBuyingView" />
         <activity android:name=".GroupBuyingWrite" />
         <activity android:name=".GroupBuying" />
+        <activity android:name=".BorrowInfo" />
+        <activity android:name=".BorrowList" />
+        <activity android:name=".WriteBorrow" />
+        <activity android:name=".RegisterActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

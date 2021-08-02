@@ -23,4 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="물건빌리기" />
+    <Button
+        android:id="@+id/mypageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="마이페이지" />
 </LinearLayout>

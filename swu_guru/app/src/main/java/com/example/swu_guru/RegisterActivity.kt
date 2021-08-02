@@ -12,6 +12,9 @@ import kotlinx.android.synthetic.main.activity_join.*
 
 class RegisterActivity : AppCompatActivity() {
 
+    lateinit var myDBHelper: MyDBHelper
+    lateinit var sqlitedb: SQLiteDatabase
+    lateinit var nickname: String
     val TAG: String = "Register"
     var isExistBlank = false
     var isPWSame = false
@@ -19,6 +22,8 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
+        myDBHelper = MyDBHelper(this)
+        nickname = ""
 
         btn_register.setOnClickListener {
             Log.d(TAG, "회원가입 버튼 클릭")
@@ -49,13 +54,17 @@ class RegisterActivity : AppCompatActivity() {
                 editor.putString("pw", pw)
                 editor.apply()
 
+                // 회원정보 DB에 저장
+                sqlitedb = myDBHelper.writableDatabase
+                sqlitedb = myDBHelper.readableDatabase
+                sqlitedb.execSQL("INSERT INTO user VALUES (null, '$id', '$pw', null, null)")
+
                 // 로그인 화면으로 이동
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
 
             }
             else{
-
                 // 상태에 따라 다른 다이얼로그 띄워주기
                 if(isExistBlank){   // 작성 안한 항목이 있을 경우
                     dialog("blank")

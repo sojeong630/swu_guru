@@ -3,6 +3,7 @@ package com.example.swu_guru
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
@@ -13,9 +14,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var marketButton : Button
     lateinit var gbbtn : Button
     lateinit var borrowButton : Button
+    lateinit var mypageButton: Button
+    lateinit var id: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        id = intent.getStringExtra("id").toString()
 
         marketButton = findViewById(R.id.marketButton)
         marketButton.setOnClickListener{
@@ -37,5 +42,12 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        mypageButton = findViewById(R.id.mypageButton)
+        mypageButton.setOnClickListener{
+            var intent = Intent(this, Mypage::class.java)
+            intent.putExtra("id", id)
+            startActivity(intent)
+
+        }
     }
 }
