@@ -36,6 +36,10 @@ class RealMainActivity : AppCompatActivity() {
             if(id == savedId && pw == savedPw){
                 // 로그인 성공 다이얼로그 보여주기
                 dialog("success")
+
+                // 올릴때 여기 삭제
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             else{
                 // 로그인 실패 다이얼로그 보여주기
@@ -58,6 +62,9 @@ class RealMainActivity : AppCompatActivity() {
         if(type.equals("success")){
             dialog.setTitle("로그인 성공")
             dialog.setMessage("로그인 성공!")
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
         else if(type.equals("fail")){
             dialog.setTitle("로그인 실패")
@@ -75,5 +82,6 @@ class RealMainActivity : AppCompatActivity() {
 
         dialog.setPositiveButton("확인",dialog_listener)
         dialog.show()
+
     }
 }

@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swu_guru.databinding.ActivitySwuMarketBinding
 
 class SwuMarketActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class SwuMarketActivity : AppCompatActivity() {
         adapter.itemList = data
 
         binding.marketList.adapter = adapter
-        binding.marketList.layoutManager = GridLayoutManager(this, 2)
+        binding.marketList.layoutManager = LinearLayoutManager(this)
 
         binding.writeButton.setOnClickListener{
             var intent = Intent(this, writeActivity::class.java)

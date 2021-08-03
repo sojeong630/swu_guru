@@ -27,6 +27,14 @@ class ListAdapter: RecyclerView.Adapter<Holder>() {
 
 class Holder(val binding: MarketlistLayoutBinding): RecyclerView.ViewHolder(binding.root) {
 
+    init {
+        binding.root.setOnClickListener {
+            val intent = Intent(binding.root.context, MarketInfo::class.java)
+            intent.putExtra("market_title", binding.marketTitle.text)
+            binding.root.context.startActivity(intent)
+        }
+    }
+
     fun setListlayout(layouts: ListLayout) {
         binding.marketTitle.text = "${layouts.title}"
         binding.marketCost.text = "${layouts.cost}"
