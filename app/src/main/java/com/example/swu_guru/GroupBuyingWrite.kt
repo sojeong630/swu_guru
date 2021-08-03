@@ -99,24 +99,29 @@ class GroupBuyingWrite : AppCompatActivity() {
                 Log.d("image save", "이미지 저장")
             } catch (cce: ClassCastException) {Log.d("image null", "이미지 저장 안함")}
 
-            // 글 내용이 있어야만 등록 가능하도록 추후 설정
-
-            // 글 내용과 이미지 DB에 저장
-            if(byteArray == null) { // 이미지 미선택시 -> 기본 이미지 출력
-                sqlitedb.execSQL("INSERT INTO writing VALUES (null, '$title', '$content', $price, $person, $count, null, $tag)")
-            } else { // 이미지 선택 시
-                var insQuery: String = "INSERT INTO writing (WId, title, content, price, person, count, image, tag) " +
-                        "VALUES (null, '$title', '$content', $price, $person, $count, ?, $tag)"
-                var stmt: SQLiteStatement = sqlitedb.compileStatement(insQuery)
-                stmt.bindBlob(1, byteArray)
-                stmt.execute()
+            // 모든 항목이 입력되면 저장 가능
+            if(title.isNotEmpty() && content.isNotEmpty() && price.isNotEmpty() && person.isNotEmpty() && count.isNotEmpty()) {
+                // 글 내용과 이미지 DB에 저장
+                if (byteArray == null) { // 이미지 미선택시 -> 기본 이미지 출력
+                    sqlitedb.execSQL("INSERT INTO writing VALUES (null, '$title', '$content', $price, $person, $count, null, $tag)")
+                } else { // 이미지 선택 시
+                    var insQuery: String =
+                        "INSERT INTO writing (WId, title, content, price, person, count, image, tag) " +
+                                "VALUES (null, '$title', '$content', $price, $person, $count, ?, $tag)"
+                    var stmt: SQLiteStatement = sqlitedb.compileStatement(insQuery)
+                    stmt.bindBlob(1, byteArray)
+                    stmt.execute()
+                }
+                Log.d("intent id", "$id")
+                // 화면 이동 -> 공동구매 상품 상세 페이지
+                val intent = Intent(this, GroupBuying::class.java)
+                startActivity(intent)
             }
-
-            Log.d("intent id", "$id")
-            // 화면 이동 -> 공동구매 상품 상세 페이지
-            val intent = Intent(this, GroupBuying::class.java)
-            startActivity(intent)
+            else {
+                Toast.makeText(this, "모든 항목을 입력해주세요", android.widget.Toast.LENGTH_SHORT).show()
+            }
         }
+
 
 
     } // onCreate 끝

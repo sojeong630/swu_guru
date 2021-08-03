@@ -1,17 +1,20 @@
 package com.example.swu_guru
 
+
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteStatement
-import android.graphics.drawable.Drawable
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_join.*
+import java.io.ByteArrayOutputStream
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -61,7 +64,20 @@ class RegisterActivity : AppCompatActivity() {
                 nickname = "슈니"
                 sqlitedb = myDBHelper.writableDatabase
                 sqlitedb = myDBHelper.readableDatabase
+
+                // 기본 프로필 이미지 파일 -> bitmap -> byteArray -> BLOB
+                val bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user_icon)
+                val user = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, user)
+                val img = user.toByteArray()
                 sqlitedb.execSQL("INSERT INTO user VALUES (null, '$id', '$pw', null, '$nickname')")
+
+                // 프로필 이미지 DB에 저장
+                var insQuery: String = "UPDATE user SET " + "image = ? WHERE id = '$id'"
+                var stmt: SQLiteStatement = sqlitedb.compileStatement(insQuery)
+                stmt.bindBlob(1, img)
+                stmt.execute()
+
 
                 // 로그인 화면으로 이동
                 val intent = Intent(this, MainActivity::class.java)
@@ -81,7 +97,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
         }
-    }
+    } // onCreate 끝
 
     // 회원가입 실패시 다이얼로그를 띄워주는 메소드
     fun dialog(type: String){
@@ -107,9 +123,10 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        dialog.setPositiveButton("확인",dialog_listener)
+        dialog.setPositiveButton("확인", dialog_listener)
         dialog.show()
     }
+
 
 
 

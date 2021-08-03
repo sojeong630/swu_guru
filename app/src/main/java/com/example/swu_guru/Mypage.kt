@@ -55,8 +55,6 @@ class Mypage : AppCompatActivity() {
         submit = findViewById(R.id.submit)
 
 
-
-
         // 로그인/회원가입 하며 putExtra()한 아이디 및 DB 저장된 정보 불러오기
         idtext = findViewById(R.id.idtext)
         var cursor: Cursor
@@ -64,18 +62,18 @@ class Mypage : AppCompatActivity() {
 
 
         if (cursor.moveToFirst()) {
-            nicknameResult = nickname.text.toString()
 
             id = cursor.getString(cursor.getColumnIndex("id")).toString()
             nicknameResult = cursor.getString(cursor.getColumnIndex("nickname")).toString()
+            nickname.text = nicknameResult
 
             // BLOB 상태의 이미지 처리
-           /* try {
+            try {
                 val v_image = cursor.getBlob(cursor.getColumnIndex("image")) ?: null
                 val bitmap = BitmapFactory.decodeByteArray(v_image, 0, v_image!!.size)
                 profileImage.setImageBitmap(bitmap)
             } catch (knpe: KotlinNullPointerException) {
-            }*/
+            }
 
             idtext.text = id
             nickname.text = nicknameResult
@@ -136,10 +134,8 @@ class Mypage : AppCompatActivity() {
                 Log.d("image save", "이미지 저장")
             } catch (cce: ClassCastException) {Log.d("image null", "이미지 저장 안함")}
 
-            // 글 내용과 이미지 DB에 저장
+            // 프로필 이미지 DB에 저장
             if(byteArray != null) {
-                // var insQuery: String = "INSERT INTO writing (WId, title, content, price, person, count, image, tag) " +
-                        /*"VALUES (null, '$title', '$content', $price, $person, $count, ?, $tag)"*/
 
                 var insQuery: String = "UPDATE user SET " + "image = ? WHERE id = '$id'"
                 var stmt: SQLiteStatement = sqlitedb.compileStatement(insQuery)

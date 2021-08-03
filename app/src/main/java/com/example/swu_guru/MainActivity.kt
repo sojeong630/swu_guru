@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         marketButton = findViewById(R.id.marketButton)
         marketButton.setOnClickListener{
             var intent = Intent(this, SwuMarketActivity::class.java)
+            intent.putExtra("id", id)
             startActivity(intent)
 
         }

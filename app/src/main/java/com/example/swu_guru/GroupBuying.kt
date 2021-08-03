@@ -25,7 +25,7 @@ class GroupBuying : AppCompatActivity() {
     lateinit var gtitle: String
     lateinit var gprice: String
     lateinit var btnwrite: Button
-    var gid: Int = 0
+    var gid: Int = 0 // 상품 id
     var gperson: Int = 0
     var gcount: Int = 0
     lateinit var switchprogress: Switch

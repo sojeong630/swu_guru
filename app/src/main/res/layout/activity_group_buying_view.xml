@@ -114,31 +114,14 @@
                             android:layout_height="match_parent"
                             android:layout_weight="4"
                             android:orientation="horizontal">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:src="@color/gray" />
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:src="@color/teal_200"></de.hdodenhof.circleimageview.CircleImageView>
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:src="@color/basic"></de.hdodenhof.circleimageview.CircleImageView>
-
                             <TextView
                                 android:id="@+id/vcount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/noto_sans"
-                                android:paddingLeft="5dp"
                                 android:text="1"
                                 android:textColor="#000000"
-                                android:textSize="20dp"
+                                android:textSize="25dp"
                                 android:textStyle="bold"
                                 android:gravity="bottom" />
 
@@ -149,7 +132,7 @@
                                 android:paddingLeft="2dp"
                                 android:text="/"
                                 android:textColor="#000000"
-                                android:textSize="20dp"
+                                android:textSize="25dp"
                                 android:textStyle="bold"
                                 android:gravity="bottom" />
 
@@ -158,10 +141,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/noto_sans"
-                                android:paddingLeft="2dp"
+                                android:paddingRight="5dp"
                                 android:text="3"
                                 android:textColor="#000000"
-                                android:textSize="20dp"
+                                android:textSize="25dp"
                                 android:textStyle="bold"
                                 android:gravity="bottom" />
                         </LinearLayout>
@@ -203,7 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans"
-                    android:text="댓글 0개"
+                    android:text="댓글"
                     android:textSize="15dp" />
                 <LinearLayout
                     android:layout_width="match_parent"
