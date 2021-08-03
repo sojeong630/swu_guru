@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swu_guru.R
 import com.example.swu_guru.RegisterActivity
+import kotlinx.android.synthetic.main.activity_market_info.*
 import kotlinx.android.synthetic.main.activity_real_main.*
 
 
@@ -45,6 +46,12 @@ class RealMainActivity : AppCompatActivity() {
                 // 로그인 실패 다이얼로그 보여주기
                 dialog("fail")
             }
+
+            //로그인 후 다른 액티비티로 전환하기
+            val nextIntent = Intent(this, MainActivity::class.java)
+            //전환된 액티비티에 데이터 값 전달
+            nextIntent.putExtra("id", savedId) //key: "email", value: inputEmail
+            startActivity(nextIntent)
         }
 
         // 회원가입 버튼

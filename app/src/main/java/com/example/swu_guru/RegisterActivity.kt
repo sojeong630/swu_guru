@@ -3,6 +3,9 @@ package com.example.swu_guru
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteStatement
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -13,6 +16,9 @@ import kotlinx.android.synthetic.main.activity_join.*
 
 class RegisterActivity : AppCompatActivity() {
 
+    lateinit var myDBHelper: MyDBHelper
+    lateinit var sqlitedb: SQLiteDatabase
+    lateinit var nickname: String
     val TAG: String = "Register"
     var isExistBlank = false
     var isPWSame = false
@@ -20,6 +26,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
+        myDBHelper = MyDBHelper(this)
 
         btn_register.setOnClickListener {
             Log.d(TAG, "회원가입 버튼 클릭")
@@ -50,8 +57,15 @@ class RegisterActivity : AppCompatActivity() {
                 editor.putString("pw", pw)
                 editor.apply()
 
+                // 회원정보 DB에 저장
+                nickname = "슈니"
+                sqlitedb = myDBHelper.writableDatabase
+                sqlitedb = myDBHelper.readableDatabase
+                sqlitedb.execSQL("INSERT INTO user VALUES (null, '$id', '$pw', null, '$nickname')")
+
                 // 로그인 화면으로 이동
                 val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("id", id)
                 startActivity(intent)
 
             }
