@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".SwuMarketActivity">
+    tools:context=".SwuMarketWant">
     <data>
 
     </data>
@@ -34,7 +34,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/button_round"
+                android:background="@drawable/button_round_white"
                 android:text="#팔아요"
                 app:layout_constraintEnd_toStartOf="@+id/wantButton"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -47,7 +47,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/button_round_white"
+                android:background="@drawable/button_round"
                 android:text="#원해요"
                 app:layout_constraintStart_toEndOf="@+id/buyButton"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />

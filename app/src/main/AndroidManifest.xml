@@ -14,17 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Swu_guru">
         <activity
+            android:name=".MarketWantInfo"
+            android:parentActivityName=".SwuMarketWant"/>
+
+        <activity
+            android:name=".SwuMarketWant"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".MarketInfo"
             android:label="@string/title_activity_market_info"
             android:parentActivityName=".SwuMarketActivity"
-            android:theme="@style/Theme.Swu_guru.NoActionBar"></activity>
+            android:theme="@style/Theme.Swu_guru.NoActionBar" />
         <activity
             android:name=".writeActivity"
             android:parentActivityName=".SwuMarketActivity" />
         <activity
             android:name=".SwuMarketActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".RealMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Mypage"></activity>
+        <activity android:name=".Mypage" />
         <activity android:name=".GroupBuyingView" />
         <activity android:name=".GroupBuyingWrite" />
         <activity android:name=".GroupBuying" />
@@ -40,6 +47,7 @@
         <activity android:name=".BorrowList" />
         <activity android:name=".WriteBorrow" />
         <activity android:name=".RegisterActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

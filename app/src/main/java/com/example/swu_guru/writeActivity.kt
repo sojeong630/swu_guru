@@ -29,9 +29,14 @@ class writeActivity : AppCompatActivity() {
     lateinit var mTitle : EditText
     lateinit var mPlace : EditText
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write)
+
+        var data:String?
+        data = intent.getStringExtra("key")
 
         mbtnUp = findViewById(R.id.mbtnUp)
         mContent = findViewById(R.id.mContent)
@@ -42,21 +47,40 @@ class writeActivity : AppCompatActivity() {
 
         dbManager = MarketDBManager(this)
 
-        //쓰기 버튼 클릭 시
-        mbtnUp.setOnClickListener{
-            var title : String = mTitle.text.toString()
-            var price : String = mPrice.text.toString()
-            var content: String = mContent.text.toString()
-            var place : String = mPlace.text.toString()
 
-            sqlitedb = dbManager.writableDatabase
-            sqlitedb.execSQL("INSERT INTO marketTBL VALUES ('"+ title +"', '"+ content +"', "+ price +", '"+ place +"');")
+        if(data == "buy") {
+            //쓰기 버튼 클릭 시
+            mbtnUp.setOnClickListener {
+                var title: String = mTitle.text.toString()
+                var price: String = mPrice.text.toString()
+                var content: String = mContent.text.toString()
+                var place: String = mPlace.text.toString()
+
+                sqlitedb = dbManager.writableDatabase
+                sqlitedb.execSQL("INSERT INTO marketTBL VALUES ('" + title + "', '" + content + "', " + price + ", '" + place + "');")
 
 
+                val intent = Intent(this, SwuMarketActivity::class.java)
+                startActivity(intent)
 
-            val intent = Intent(this, SwuMarketActivity::class.java)
-            startActivity(intent)
+            }
+        }
 
+        if(data == "want") {
+            //쓰기 버튼 클릭 시
+            mbtnUp.setOnClickListener {
+                var title: String = mTitle.text.toString()
+                var price: String = mPrice.text.toString()
+                var content: String = mContent.text.toString()
+                var place: String = mPlace.text.toString()
+
+                sqlitedb = dbManager.writableDatabase
+                sqlitedb.execSQL("INSERT INTO marketWantTBL VALUES ('" + title + "', '" + content + "', " + price + ", '" + place + "');")
+
+                val intent = Intent(this, SwuMarketWant::class.java)
+                startActivity(intent)
+
+            }
         }
     }
 

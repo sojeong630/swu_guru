@@ -8,15 +8,15 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.swu_guru.databinding.ActivitySwuMarketBinding
+import com.example.swu_guru.databinding.ActivitySwuMarketWantBinding
 
-class SwuMarketActivity : AppCompatActivity() {
-    val binding by lazy { ActivitySwuMarketBinding.inflate(layoutInflater) }
+class SwuMarketWant : AppCompatActivity() {
+    val binding by lazy { ActivitySwuMarketWantBinding.inflate(layoutInflater) }
     lateinit var dbManager: MarketDBManager
     lateinit var sqlitedb : SQLiteDatabase
     lateinit var mtitle : String
     lateinit var mcost : String
-    lateinit var wantButton : Button
+    lateinit var buyButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,23 +24,24 @@ class SwuMarketActivity : AppCompatActivity() {
 
         dbManager = MarketDBManager(this)
 
-        wantButton = findViewById(R.id.wantButton)
+        buyButton = findViewById(R.id.buyButton)
 
         val data:MutableList<ListLayout> = loadData()
-        var adapter = ListAdapter()
+        var adapter = MarketWantListAdapter()
         adapter.itemList = data
 
         binding.marketList.adapter = adapter
         binding.marketList.layoutManager = LinearLayoutManager(this)
 
+
         binding.writeButton.setOnClickListener{
             var intent = Intent(this, writeActivity::class.java)
-            intent.putExtra("key", "buy")
+            intent.putExtra("key", "want")
             startActivity(intent)
         }
 
-        wantButton.setOnClickListener{
-            var intent = Intent(this, SwuMarketWant::class.java)
+        buyButton.setOnClickListener{
+            var intent = Intent(this, SwuMarketActivity::class.java)
             startActivity(intent)
         }
 
@@ -50,7 +51,7 @@ class SwuMarketActivity : AppCompatActivity() {
         sqlitedb = dbManager.readableDatabase
         var cursor: Cursor
 
-        cursor = sqlitedb.rawQuery("SELECT * FROM marketTBL;", null)
+        cursor = sqlitedb.rawQuery("SELECT * FROM marketWantTBL;", null)
         if(cursor.moveToFirst()){
             do{
                 mtitle = cursor.getString(cursor.getColumnIndex("title")).toString()
